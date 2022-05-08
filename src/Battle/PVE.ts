@@ -13,16 +13,14 @@ class PVE extends Battle {
 
   isAlive(): boolean {
     if (this.fighter.lifePoints > 0 
-      && this.monsters.some((element) => element.lifePoints > 0)) {
+      && this.monsters.some((e) => e.lifePoints > 0)) {
       return true;
     }
     return false;
   }
 
   figtherWins(): void {
-    const creatures = this.monsters.find(
-      (element) => element.lifePoints > 0,
-    );
+    const creatures = this.monsters.find((e) => e.lifePoints > 0);
     if (creatures) {
       this.fighter.attack(creatures);
     }
@@ -36,7 +34,7 @@ class PVE extends Battle {
     });
   }
 
-  fight(): number {
+  public fight(): number {
     while (this.isAlive()) {
       this.figtherWins();      
       this.monstersWins();
